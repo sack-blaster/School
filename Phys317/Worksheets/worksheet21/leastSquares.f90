@@ -72,15 +72,3 @@ output: DO k = 1, dim
         END DO output
         
 END PROGRAM LeastSquares
-
-
-
-
-
-
-
-
-
-
-
-
