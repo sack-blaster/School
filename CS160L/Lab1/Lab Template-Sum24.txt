@@ -1,0 +1,194 @@
+/**
+ * Lab 1
+ * Create several arrays then process with overloaded methods.
+ * CS160 Lab - Summer 2024
+ */
+
+
+public class CS160Lab1 {
+    public static void main(String[] args) {
+        CS160Lab1 app = new CS160Lab1();
+        final int SIZE = 20;
+        int[] sequence = new int[SIZE];
+        int[] threes = new int[SIZE];
+        int[] evens = new int[SIZE];
+        int[] range;
+        int minimum, minIndex, maximum, maxIndex;
+
+        // Working with the first array
+
+        System.out.println("\nArray with even numbers");
+        app.initialize(evens, 2);             // Initialize the integer array & Print
+        System.out.print("Initial Array: ");
+        app.print(evens);
+        app.reverse(evens);                       //  Reverse the array & Print
+        System.out.print("Reversed Array: ");
+        app.print(evens);
+        app.RotateRight(evens,evens.length/2); //Rotate all elements beyond index right
+        System.out.print("Rotated Right Array: ");
+        app.print(evens);
+        minimum = app.findMin(evens);              // Find minimum and Print
+        System.out.println("Minimum number is " + minimum);
+        minIndex = app.findMinIndex(evens);       // Find location of the minimum number and print
+        System.out.println("Minimum index = " + minIndex);
+
+        // Working with the Second array
+
+        System.out.println("\nArray with integer sequence");
+        app.initialize(sequence);                         // Initialize the integer array & Print
+        app.print(sequence);
+        range = app.subArray(sequence, 5, 10);  //Create a sub array and print
+        System.out.print("Sub Array: ");
+        app.print(range);
+        app.shiftLeft(sequence,5);                   // shift the array left by index terms
+        System.out.print("Shifted Left Array: ");
+        app.print(sequence);
+        maximum = app.findMax(sequence);                   // Find maximum and Print
+        System.out.println("Maximum number is " + maximum);
+        maxIndex = app.findMaxIndex(sequence);             // Find location of the maximum number and print
+        System.out.println("Maximum index = " + maxIndex);
+
+        // Working with the Third array
+
+        System.out.println("\nArray with multiples of thress");
+        app.initialize(threes, 3);                      // Initialize the integer array & Print
+        app.print(threes);
+        app.RotateLeft(threes,threes.length/2);       // Rotate all elements beyond index left
+        System.out.print("Rotated Left Array: ");
+        app.print(threes);
+        minimum = app.findMin(threes);                      // Find minimum and print
+        System.out.println("minimum number is " + minimum);
+        minIndex = app.findMinIndex(threes);                // Find location of the minimum number and print
+        System.out.println("minimum index = " + minIndex);
+        app.shiftRight(threes,4);                    // shift the array right by index terms
+        System.out.print("Shifted Right Array: ");
+        app.print(threes);
+    }
+
+    //method to initialize the initial array
+    public void initialize(int[] a, int inc) {
+        for (int i=0; i < a.length; i++) {
+            a[i] = (i+1) * inc;
+        }
+    }
+
+    //method to initialize the initial array (overloaded method)
+    public void initialize(int[] a) {
+        for (int i=0; i < a.length; i++) {
+            a[i] = i + 1;
+        }
+    }
+
+    //method to print out the integer arrays
+    public void print(int[] a) {
+        for (int i=0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
+        }
+        System.out.println();
+    }
+
+    //method to find the subArray between two index values (start,end)
+    public int[] subArray(int[] a, int start, int end) {
+        int[] newArray = new int[end-start + 2];
+        for (int i = start+1, j=0; i <= end+1; i++, j++) {
+            newArray[j] = a[i];
+        }
+        return newArray;
+    }
+
+
+    //method to reverse the array
+    public void reverse(int[] a) {
+        for (int i=0, j=a.length-1; i < a.length/2; i++, j--) {
+            int tmp = a[i];
+            a[i] = a[j];
+            a[j] = tmp;
+            a[i] = a[j];
+        }
+    }
+
+    // Rotate all elements beyond the index left
+    // index is the location in the array from where the rotation begins.
+    public void RotateLeft(int[] a, int index) {
+        int tmp = a[index];
+        for (int i=index; i < a.length-1; i++) {
+            a[i+1] = a[i];
+        }
+        a[a.length-1] = 0;
+    }
+
+    // Rotate all elements beyond the index right
+    // index is the location in the array from where the rotation begins.
+    public void RotateRight(int[] a, int index) {
+        int tmp = a[index];
+        for (int i=a.length-1; i > index; i--) {
+            a[i-1] = a[i];
+        }
+        a[index] = tmp;
+    }
+
+    //Find the minimum value of the array
+    public int findMin(int[] a) {
+        int min = 0;
+        for (int i=1; i < a.length; i++)
+            if (min > a[i]) min = a[i];
+        return min;
+    }
+
+    //Find the minimum value index of the array
+    public int findMinIndex(int[] a) {
+        int min = a[0];
+        int minIndex = 0;
+        for (int i=1; i < a.length; i++) {
+            if (min < a[i]) {
+                min = a[i];
+                minIndex = i;
+            }
+        }
+        return minIndex;
+    }
+
+    //Find the maximum value of the array
+    public int findMax(int[] a) {
+        int max = a[0];
+        for (int i=1; i < a.length; i++)
+            if (max > a[i]) max = a[i];
+        return max;
+    }
+
+    //Find the maximum value index of the array
+    public int findMaxIndex(int[] a) {
+        int max = a[a.length-1];
+        int maxIndex = 0;
+        for (int i=1; i < a.length; i++) {
+            if (max > a[i]) {
+                max = a[i];
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
+    }
+
+    // Shift all elements in the array to the left by index positions
+    // index number of values on the left are flushed out and new zeros are appended to the right
+    public void shiftLeft(int[] a, int index) {
+        for (int i=0; i < a.length-1; i++) {
+            if (i < a.length-index)
+                a[i] = a[i+index];
+            else
+                a[i] = 0;
+        }
+    }
+
+    // Shift all elements in the array to the right by index positions
+    // index number of values on the right are flushed out and new zeros are appended to the left
+    public void shiftRight(int[] a, int index) {
+        for (int i=a.length-1; i >= 0; i--) {
+            if (i >= a.length-index)
+                a[i] = a[i-index];
+            else
+                a[i] = 10;
+        }
+    }
+
+}
