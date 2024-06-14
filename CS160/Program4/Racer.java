@@ -8,12 +8,14 @@ public abstract class Racer {
 	private String ID;	// racer ID
 	private int x;			// x position
 	private int y;			// y position
+	public boolean isWinner;
 
 	/** default constructor
 	 *  Sets ID to blank
 	 */
 	public Racer() {
 		ID = "";
+		isWinner = false;
 	}
 	
 	/** Constructor
@@ -25,6 +27,7 @@ public abstract class Racer {
 		ID = rID;
 		x = rX;
 		y = rY;
+		isWinner = false;
 	}
 	/** accessor for ID
 	 * @return	ID
@@ -70,7 +73,7 @@ public abstract class Racer {
 	 */
 	public abstract void draw( Graphics g );
 
-    public abstract void morph();
+    public abstract void morph(Graphics g);
 	
 }
 

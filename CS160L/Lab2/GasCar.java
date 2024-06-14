@@ -1,58 +1,35 @@
 /**
- *  Lab 2
+ *  Lab 3
  *  This program is used to create a main method that creates instances of the GasCar, ElectricCar, and DieselCar classes and prints out their information.
  *  CS160L
- *  6/2/24
+ *  6/9/24
  *  @author  Jacob Archer
   */
 
-public class GasCar extends Car {
-    private String make;
-    private String model;
+  public class GasCar extends Car {
+    private double fuelTankCapacity;
 
     public GasCar() {
-        this.year = 0;
-        this.make = "";
-        this.model = "";
-        this.price = 0;
+        super();
+        this.fuelTankCapacity = 0.0;
     }
 
-    public GasCar(int year, double price, String make, String model) {
-        this.year = year;
-        this.make = make;
-        this.model = model;
-        this.price = price;
+    public GasCar(int year, double price, String make, String model, double fuelTankCapacity) {
+        super(year, price, make, model);
+        this.fuelTankCapacity = fuelTankCapacity;
     }
 
-    public int getYear() {
-        return year;
+    @Override
+    public double getFuelTankCapacity() {
+        return fuelTankCapacity;
     }
 
-    public String getMake() {
-        return make;
+    public void setFuelTankCapacity(double fuelTankCapacity) {
+        this.fuelTankCapacity = fuelTankCapacity;
     }
 
-    public String getModel() {
-        return model;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
+    @Override
+    public void setBatteryCapacity(double capacity) {
+        // Does nothing for GasCar
     }
 }

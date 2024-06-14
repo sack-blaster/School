@@ -216,7 +216,7 @@ public class Race extends JFrame {
 	private boolean findWinner() {
 		for (Racer r : racerList) {
 			if (r.getX() > finishX)
-				return true;
+			return true;
 		}
 		return false;
 	}
@@ -271,6 +271,7 @@ public class Race extends JFrame {
 		app = new Race();
 		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		app.prepareToRace();
+		app.findWinner();
 		app.runRace();
 	}
 

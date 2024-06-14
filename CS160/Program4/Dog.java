@@ -59,7 +59,9 @@ public class Dog extends Racer
      int startY = getY( );
      
      	g.setColor( new Color( 139, 69, 19 ) ); // brown
-
+      if (this.isWinner){
+        morph(g);
+      }
      //body
      g.fillOval( startX - 30, startY, 25, 15 );
 
@@ -81,8 +83,27 @@ public class Dog extends Racer
         speed = 50;
     }
 
-    public void morph() {
-        setY(getY() - 10);
-        setY(getY() + 10);
-    }
+    public void morph( Graphics g ){
+      // move the hare up and down 10 times
+      for (int i = 0; i < 10; i++){
+        // move the hare up
+        setY(getY() - 5);
+        draw(g);
+        // pause for 100 milliseconds
+        try {
+          Thread.sleep(100);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+        // move the hare down
+        setY(getY() + 5);
+        draw(g);
+        // pause for 100 milliseconds
+        try {
+          Thread.sleep(100);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+      }    
+    } 
 }
