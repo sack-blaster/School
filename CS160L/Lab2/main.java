@@ -1,8 +1,8 @@
 /**
- *  Lab 3
+ *  Lab 4
  *  This program is used to create a main method that creates instances of the GasCar, ElectricCar, and DieselCar classes and prints out their information.
  *  CS160L
- *  6/9/24
+ *  6/16/24
  *  @author  Jacob Archer
   */
 
@@ -50,5 +50,16 @@
         System.out.println("Diesel Car Price: " + dieselCar.getPrice());
         System.out.println("Diesel Car Fuel Tank Capacity: " + dieselCar.getFuelTankCapacity());
         System.out.println("Diesel Car Age Price Ratio: " + dieselCar.computeAgePriceRatio());
+
+        Inventory inventory = new Inventory();
+        inventory.addCar(new GasCar(2024, 20000, "Toyota", "Corolla", 50));
+        inventory.addCar(new ElectricCar(2022, 40000, "Tesla", "Model 3", 75));
+        inventory.addCar(new DieselCar(2021, 30000, "Ford", "F-150", 60));
+        inventory.printInventory();
+        inventory.sortByPrice();
+        inventory.printInventory();
+        System.out.println("After discount:");
+        inventory.applyDiscount(1000, GasCar.class);
+        inventory.printInventory();
     }
 }

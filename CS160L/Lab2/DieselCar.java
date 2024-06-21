@@ -1,8 +1,8 @@
 /**
- *  Lab 3
+ *  Lab 4
  *  This program is used to create a main method that creates instances of the GasCar, ElectricCar, and DieselCar classes and prints out their information.
  *  CS160L
- *  6/9/24
+ *  6/16/24
  *  @author  Jacob Archer
   */
 
