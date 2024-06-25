@@ -1,8 +1,8 @@
 /**
- *  Lab 4
+ *  Lab 5
  *  This program is used to create a main method that creates instances of the GasCar, ElectricCar, and DieselCar classes and prints out their information.
  *  CS160L
- *  6/16/24
+ *  6/23/24
  *  @author  Jacob Archer
   */
 
@@ -11,7 +11,7 @@
 
     public DieselCar() {
         super();
-        this.fuelTankCapacity = 0.0;
+        this.fuelTankCapacity = Car.API.getFuelTankCapacity(year, make, model);
     }
 
     public DieselCar(int year, double price, String make, String model, double fuelTankCapacity) {

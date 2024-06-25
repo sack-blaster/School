@@ -1,5 +1,10 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+import java.time.LocalDateTime;
 
 public class Inventory {
     private ArrayList<Car> carList;
@@ -14,6 +19,20 @@ public class Inventory {
         carList.add(car);
     }
 
+    public void InventoryPrintToFile(String filename) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+            // write the current date and time to the file
+            writer.write(LocalDateTime.now().toString());
+            writer.newLine();
+            for (Car car : carList) {
+                writer.write(car.toString());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     // Method to apply discount to a specific car type
     public void applyDiscount(double discount, Class<?> carType) {
         for (Car car : carList) {

@@ -1,8 +1,8 @@
 /**
- *  Lab 4
+ *  Lab 5
  *  This program is used to create a main method that creates instances of the GasCar, ElectricCar, and DieselCar classes and prints out their information.
  *  CS160L
- *  6/16/24
+ *  6/23/24
  *  @author  Jacob Archer
   */
 
@@ -11,6 +11,7 @@
     private double price;
     private String make;
     private String model;
+    this.price = Car.API.getCarPrice(year, make, model);
 
     public Car() {
         this.year = 0;

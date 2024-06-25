@@ -12,19 +12,19 @@
         ElectricCar electricCar = new ElectricCar();
         DieselCar dieselCar = new DieselCar();
 
-        gasCar.setYear(2024);
+        gasCar.setYear(2017);
         gasCar.setMake("Toyota");
         gasCar.setModel("Corolla");
         gasCar.setPrice(20000);
         gasCar.setFuelTankCapacity(50);
 
-        electricCar.setYear(2024);
+        electricCar.setYear(2020);
         electricCar.setMake("Tesla");
         electricCar.setModel("Model 3");
         electricCar.setPrice(40000);
         electricCar.setBatteryCapacity(75);
 
-        dieselCar.setYear(2024);
+        dieselCar.setYear(2019);
         dieselCar.setMake("Ford");
         dieselCar.setModel("F-150");
         dieselCar.setPrice(30000);
@@ -61,5 +61,6 @@
         System.out.println("After discount:");
         inventory.applyDiscount(1000, GasCar.class);
         inventory.printInventory();
+        inventory.InventoryPrintToFile("inventory.txt");
     }
 }
