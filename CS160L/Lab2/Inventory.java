@@ -48,6 +48,10 @@ public class Inventory {
         Collections.sort(carList);
     }
 
+    public void sortByYear() {
+        carList.sort((car1, car2) -> Integer.compare(car1.getYear(), car2.getYear()));
+    }
+
     // Method to print the inventory
     public void printInventory() {
         for (Car car : carList) {

@@ -1,8 +1,8 @@
 /**
- *  Lab 4
+ *  Lab 6
  *  This program is used to create a main method that creates instances of the GasCar, ElectricCar, and DieselCar classes and prints out their information.
  *  CS160L
- *  6/16/24
+ *  6/28/24
  *  @author  Jacob Archer
   */
 
@@ -62,5 +62,20 @@
         inventory.applyDiscount(1000, GasCar.class);
         inventory.printInventory();
         inventory.InventoryPrintToFile("inventory.txt");
+        
+        // Test CarFactory
+        try {
+            Car car1 = CarFactory.createCar(2019, "Tesla", "s");
+            System.out.println(car1.getClass().getName());
+            Car car2 = CarFactory.createCar(2018, "Ford", "F-450&fuel_type=diesel");
+            System.out.println(car2.getClass().getName());
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
+
+        // Test sortByYear lambda
+        System.out.println("Sorted by year:");
+        inventory.sortByYear();
+        inventory.printInventory();
     }
 }
